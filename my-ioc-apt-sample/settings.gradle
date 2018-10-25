@@ -1,0 +1,9 @@
+include ':app', ':viewinject-annotation', ':viewinject-compiler', ':viewinject-api', ':viewinject-sample', ':annotation', ':compiler', ':api', ':sample'
+project(':viewinject-annotation').projectDir = new File('viewinject/viewinject-annotation')
+project(':viewinject-compiler').projectDir = new File('viewinject/viewinject-compiler')
+project(':viewinject-api').projectDir = new File('viewinject/viewinject-api')
+project(':viewinject-sample').projectDir = new File('viewinject/viewinject-sample')
+project(':annotation').projectDir = new File('xqli-viewinject/annotation')
+project(':compiler').projectDir = new File('xqli-viewinject/compiler')
+project(':api').projectDir = new File('xqli-viewinject/api')
+project(':sample').projectDir = new File('xqli-viewinject/sample')

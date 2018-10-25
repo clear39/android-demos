@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PermissionApp</string>
+    <string name="rationale_camera">rationale_camera</string>
+</resources>
