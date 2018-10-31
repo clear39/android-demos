@@ -16,14 +16,16 @@
  */
 
 #include <jni.h>
-#include <malloc.h>
+
 #include <errno.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/resource.h>
 
 #include "android_native_app_glue.h"
 #include <android/log.h>
+#include <android/input.h>
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "threaded_app", __VA_ARGS__))
 #define LOGE(...) ((void)__android_log_print(ANDROID_LOG_ERROR, "threaded_app", __VA_ARGS__))
