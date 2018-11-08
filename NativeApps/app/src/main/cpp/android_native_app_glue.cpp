@@ -240,8 +240,8 @@ static void* android_app_entry(void* param) {
 // Native activity interaction (called from main thread)
 // --------------------------------------------------------------------
 
-static struct android_app* android_app_create(ANativeActivity* activity,
-        void* savedState, size_t savedStateSize) {
+static struct android_app* android_app_create(ANativeActivity* activity,void* savedState, size_t savedStateSize) {
+    //android_app 内部定义,保存到ANativeActivity中
     struct android_app* android_app = (struct android_app*)malloc(sizeof(struct android_app));
     memset(android_app, 0, sizeof(struct android_app));
     android_app->activity = activity;
@@ -396,8 +396,7 @@ static void onLowMemory(ANativeActivity* activity) {
 
 static void onWindowFocusChanged(ANativeActivity* activity, int focused) {
     LOGV("WindowFocusChanged: %p -- %d\n", activity, focused);
-    android_app_write_cmd((struct android_app*)activity->instance,
-            focused ? APP_CMD_GAINED_FOCUS : APP_CMD_LOST_FOCUS);
+    android_app_write_cmd((struct android_app*)activity->instance,focused ? APP_CMD_GAINED_FOCUS : APP_CMD_LOST_FOCUS);
 }
 
 static void onNativeWindowCreated(ANativeActivity* activity, ANativeWindow* window) {

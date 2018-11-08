@@ -137,8 +137,7 @@ static void engine_draw_frame(struct engine* engine) {
     }
 
     // Just fill the screen with a color.
-    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
-                 ((float)engine->state.y)/engine->height, 1);
+    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,((float)engine->state.y)/engine->height, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     eglSwapBuffers(engine->display, engine->surface);
@@ -244,10 +243,8 @@ void android_main(struct android_app* state) {
 
     // Prepare to monitor accelerometer
     engine.sensorManager = ASensorManager_getInstanceForPackage("");//ASensorManager_getInstance();
-    engine.accelerometerSensor = ASensorManager_getDefaultSensor(engine.sensorManager,
-                                                                 ASENSOR_TYPE_ACCELEROMETER);
-    engine.sensorEventQueue = ASensorManager_createEventQueue(engine.sensorManager,
-                                                              state->looper, LOOPER_ID_USER, NULL, NULL);
+    engine.accelerometerSensor = ASensorManager_getDefaultSensor(engine.sensorManager,ASENSOR_TYPE_ACCELEROMETER);
+    engine.sensorEventQueue = ASensorManager_createEventQueue(engine.sensorManager,state->looper, LOOPER_ID_USER, NULL, NULL);
 
     if (state->savedState != NULL) {
         // We are starting with a previous saved state; restore from it.
@@ -277,8 +274,7 @@ void android_main(struct android_app* state) {
             if (ident == LOOPER_ID_USER) {
                 if (engine.accelerometerSensor != NULL) {
                     ASensorEvent event;
-                    while (ASensorEventQueue_getEvents(engine.sensorEventQueue,
-                                                       &event, 1) > 0) {
+                    while (ASensorEventQueue_getEvents(engine.sensorEventQueue,&event, 1) > 0) {
                         LOGI("accelerometer: x=%f y=%f z=%f",
                              event.acceleration.x, event.acceleration.y,
                              event.acceleration.z);
